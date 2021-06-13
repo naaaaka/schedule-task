@@ -1,1 +1,30 @@
-<h2>test</h2>
+<div class="schedule">
+    <h2>スケジュール一覧</h2>
+    <table>
+    <tr>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>終日</th>
+        <th>スケジュール更新日時</th>
+        <th>確認</th>
+        <th>編集</th>
+    <th>削除</th>
+    </tr>
+    <% @schedules.each do |schedule| %>
+    <tr>
+         <td><%=schedule.id %></td>
+         <td><%=schedule.title %></td>
+         <td><%=schedule.start %></td>
+         <td><%=schedule.end %></td>
+         <td></td>
+         <td><%=schedule.updated_at %></td>
+         <td><%=link_to("確認", "/#{schedule.id}") %></td>
+         <td><%=link_to("編集", "/edit/:id") %></td>
+         <td></td>
+    </tr>
+    <% end %>
+    </table>
+    <a href="/new">新規登録はこちら</a>
+</div>
