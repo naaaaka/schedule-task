@@ -10,16 +10,20 @@
         <th>スケジュール更新日時</th>
         <th>確認</th>
         <th>編集</th>
-    <th>削除</th>
+        <th>削除</th>
     </tr>
     <% @schedules.each do |schedule| %>
     <tr>
          <td><%=schedule.id %></td>
          <td><%=schedule.title %></td>
-         <td><%=schedule.start %></td>
-         <td><%=schedule.end %></td>
+         <td><%=schedule.start.strftime("%Y年%m月%d日") %></td>
+         <td><%=schedule.end.strftime("%Y年%m月%d日") %></td>
+         <% if schedule.day == true %>
+         <td>〇</td>
+         <% else %>
          <td></td>
-         <td><%=schedule.updated_at %></td>
+         <% end %>
+         <td><%=schedule.updated_at.strftime("%Y年%m月%d時 %H時%M分") %></td>
          <td><%=link_to("確認", "/#{schedule.id}") %></td>
          <td><%=link_to("編集", "/edit/:id") %></td>
          <td></td>

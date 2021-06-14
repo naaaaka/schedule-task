@@ -6,13 +6,21 @@ class PostsController < ApplicationController
     end
     
     def new
+        @time = Time.now.strftime('%Y年%m月%d日')
     end
     
     def detail
+        @time = Time.now.strftime('%Y年%m月%d日')
         @schedule = Schedule.find_by(id: params[:id])
     end
     
     def edit
-        @schedule = Schedule.find_by(id: params[:id])
+        @time = Time.now.strftime('%Y年%m月%d日')
+    end
+    
+    def create
+        @schedule = Schedule.new(title:params[:title], start:params[:start], end:params[:end], day:[:day])
+        @schedule.save
+        redirect_to("/")
     end
 end

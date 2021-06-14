@@ -1,17 +1,30 @@
 <div class="schedule">
     <h2>スケジュール詳細</h2>
-    <table calss="long">
+    <table>
         <tr>
             <th>タイトル</th>
-            <th>開始日</th>
-            <th>終了日</th>
-            <th>終日</th>
-            <th>スケジュールメモ</th>
+            <td><%=@schedule.title %></td>
         </tr>
         <tr>
-             <td><%=@schedule.title %></td>
-             <td><%=@schedule.start %></td>
-             <td><%=@schedule.end %></td>
+            <th>開始日</th>
+            <td><%=@schedule.start %></td>
+        </tr>
+        <tr>
+            <th>終了日</th>
+            <td><%=@schedule.end %></td>
+        </tr>
+        <tr>
+            <th>終日</th>
+         <% if @schedule.day == true %>
+         <td>〇</td>
+         <% else %>
+         <td></td>
+         <% end %>
+        </tr>
+        <tr>
+            <th>スケジュールメモ</th>
+            <td></td>
+        </tr>
         </tr>
     </table>
     <ul>
