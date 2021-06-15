@@ -1,0 +1,32 @@
+<div class="schedule">
+    <h2>スケジュール編集</h2>
+    <%= form_tag("/create") do %>
+        <table>
+            <tr>
+                <th>タイトル</th>
+                <td><input type="text" class="cell" name="title" value=<%=@schedule.title %>></td>
+            </tr>
+            <tr>
+                <th>開始日</th>
+                <td><input type="date" name="start" class="cell" value=<%=@schedule.start %>></td>
+            </tr>
+            <tr>
+                <th>終了日</th>
+                <td><input type="date" name="end" class="cell" value=<%=@schedule.end %>></td>
+            </tr>
+            <tr>
+                <th>終日</th>
+                <td><input type="checkbox" value=true name="day" class="cell" checked=<%if @schedule==true %>"checked"<% end %>>
+                <br>終日の場合はチェックを入れます</td>
+            </tr>
+            <tr>
+                <th>スケジュールメモ</th>
+                <td><input type="text" name="memo" class="cell memo" value=<%=@schedule.memo %>></td>
+            </tr>
+        </table>
+        <div>
+            <input type="submit" value="スケジュールを新規登録する">
+        </div>
+    <% end %>
+    <a href="/">スケジュール一覧に戻る</a>
+</div>

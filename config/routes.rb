@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get "/" => "posts#top"
   get "/new" => "posts#new"
   get "/:id" => "posts#detail"
-  get "/edit/:id" => "posts#edit"
+  get "/:id/edit" => "posts#edit"
   
   post "/create" => "posts#create"
+  post ":id/delete" => "posts#delete"
 end

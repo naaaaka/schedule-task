@@ -25,8 +25,8 @@
          <% end %>
          <td><%=schedule.updated_at.strftime("%Y年%m月%d時 %H時%M分") %></td>
          <td><%=link_to("確認", "/#{schedule.id}") %></td>
-         <td><%=link_to("編集", "/edit/:id") %></td>
-         <td></td>
+         <td><%=link_to("編集", "/#{schedule.id}/edit") %></td>
+         <td><%=link_to("削除", "/#{schedule.id}/delete",{method: "post"}) %></td>
     </tr>
     <% end %>
     </table>
