@@ -1,27 +1,37 @@
 <div class="schedule">
     <h2>スケジュール新規登録</h2>
+    <% if flash[:notice] %>
+        <div class="flash">
+            <%= flash[:notice] %>
+        </div>
+    <% end %>
+    <% @schedule.errors.full_messages.each do |message| %>
+        <ul>
+            <li><%=message %></li>
+        </ul>
+    <% end %>
     <%= form_tag("/create") do %>
         <table>
             <tr>
                 <th>タイトル</th>
-                <td><input type="text" class="cell" name="title"></td>
+                <td><input type="text" class="cell" name="title" value=<%=@schedule.title %>></td>
             </tr>
             <tr>
                 <th>開始日</th>
-                <td><input type="date" name="start" class="cell"></td>
+                <td><input type="date" name="start" class="cell" value=<%=@schedule.start %>></td>
             </tr>
             <tr>
                 <th>終了日</th>
-                <td><input type="date" name="end" class="cell"></td>
+                <td><input type="date" name="end" class="cell" value=<%=@schedule.end %>></td>
             </tr>
             <tr>
                 <th>終日</th>
-                <td><input type="checkbox" value="true" name="day" class="cell">
+                <td><input type="checkbox" name="day" class="cell" value=<%=@schedule.day %>>
                 <br>終日の場合はチェックを入れます</td>
             </tr>
             <tr>
                 <th>スケジュールメモ</th>
-                <td><input type="text" name="memo" class="cell memo"></td>
+                <td><input type="text" name="memo" class="cell memo" value=<%=@schedule.memo %>></td>
             </tr>
         </table>
         <div>

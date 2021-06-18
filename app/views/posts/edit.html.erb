@@ -1,6 +1,16 @@
 <div class="schedule">
     <h2>スケジュール編集</h2>
-    <%= form_tag("/create") do %>
+    <% if flash[:notice] %>
+        <div class="flash">
+            <%= flash[:notice] %>
+        </div>
+    <% end %>    
+    <% @schedule.errors.full_messages.each do |message| %>
+        <ul>
+            <li><%=message %></li>
+        </ul>
+    <% end %>
+    <%= form_tag("/#{@schedule.id}/update") do %>
         <table>
             <tr>
                 <th>タイトル</th>
@@ -25,7 +35,7 @@
             </tr>
         </table>
         <div>
-            <input type="submit" value="スケジュールを新規登録する">
+            <input type="submit" value="スケジュールを編集する">
         </div>
     <% end %>
     <a href="/">スケジュール一覧に戻る</a>
