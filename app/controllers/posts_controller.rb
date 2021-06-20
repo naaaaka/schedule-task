@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     
     def create
         @time = Time.now.strftime('%Y年%m月%d日')
-        @schedule = Schedule.new(title:params[:title], start:params[:start], end:params[:end], day:[:day], memo:params[:memo])
+        @schedule = Schedule.new(title:params[:title], start:params[:start], end:params[:end], day:params[:day], memo:params[:memo])
         if @schedule.save
             flash[:notice] = "スケジュールを登録しました"
             redirect_to("/")

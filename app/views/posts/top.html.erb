@@ -17,22 +17,26 @@
         <th>編集</th>
         <th>削除</th>
         </tr>
-    <% @schedules.each do |schedule| %>
-    <tr>
-         <td><%=schedule.id %></td>
-         <td><%=schedule.title %></td>
-         <td><%=schedule.start.strftime("%Y年%m月%d日") %></td>
-         <td><%=schedule.end.strftime("%Y年%m月%d日") %></td>
-         <% if schedule.day == true %>
-         <td>〇</td>
-         <% else %>
-         <td></td>
-         <% end %>
-         <td><%=schedule.updated_at.strftime("%Y年%m月%d時 %H時%M分") %></td>
-         <td><%=link_to"確認", "/#{schedule.id}" %></td>
-         <td><%=link_to"編集", "/#{schedule.id}/edit" %></td>
-         <td><%=link_to"削除", "/#{schedule.id}/delete",{method: "post"}%></td>
-    </tr>
+    <% if @schedules.count != 0 %>
+        <% @schedules.each do |schedule| %>
+            <tr>
+                 <td><%=schedule.id %></td>
+                 <td><%=schedule.title %></td>
+                 <td><%=schedule.start.strftime("%Y年%m月%d日") %></td>
+                 <td><%=schedule.end.strftime("%Y年%m月%d日") %></td>
+                 <% if schedule.day == 1 %>
+                     <td>〇</td>
+                 <% else %>
+                     <td></td>
+                 <% end %>
+                 <td><%=schedule.updated_at.strftime("%Y年%m月%d時 %H時%M分") %></td>
+                 <td><%=link_to"確認", "/#{schedule.id}" %></td>
+                 <td><%=link_to"編集", "/#{schedule.id}/edit" %></td>
+                 <td><%=link_to"削除", "/#{schedule.id}/delete",{method: "post"}%></td>
+            </tr>
+        <% end %>
+    <% else %>
+        <td colspan="9">スケジュールは登録されていません</td>
     <% end %>
     </table>
     <a href="/new">新規登録はこちら</a>

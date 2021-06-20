@@ -26,7 +26,11 @@
             </tr>
             <tr>
                 <th>終日</th>
-                <td><input type="checkbox" value=true name="day" class="cell" checked=<%if @schedule==true %>"checked"<% end %>>
+                <%if @schedule.day==1 %>
+                    <td><input type="checkbox" name="day" class="cell" value=1 checked="checked">
+                <% else %>
+                    <td><input type="checkbox" name="day" class="cell" value=1>
+                <% end %>
                 <br>終日の場合はチェックを入れます</td>
             </tr>
             <tr>
